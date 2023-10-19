@@ -19,7 +19,7 @@
 
                         <div class="card-body">
                             <div class="card-title mb-3">
-                                <h5>{{ $article->title}}</h5>
+                                <h5><b>{{ $article->title}}</b></h5>
                             </div>
                             <div class="card-subtitle">
                                 <span>

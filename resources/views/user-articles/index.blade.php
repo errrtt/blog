@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        {{ $articles->links()}}
+        {{$articles->links()}}
         <table class="table table-dark table-striped table-bordered">
             <tr>
                 <th>Photo</th>

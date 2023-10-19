@@ -8,7 +8,7 @@ class UserArticleController extends Controller
 {
     public function index()
     {
-        $articles = \App\Models\Article::latest()->paginate(3);
+        $articles = \App\Models\Article::paginate(10);
         return view('user-articles.index', ['articles' => $articles]);
     }
 }
