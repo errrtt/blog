@@ -67,4 +67,26 @@ class ArticleController extends Controller
 
         return redirect('/articles')->with('info', 'your one article is deleted just now');
     }
+
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        return view('articles.edit', ['article' => $article]);
+    }
+
+    public function update($id)
+    {
+        $article = Article::find($id);
+        if(request()->hasFile('file')) {
+            $file = request()->file('file');
+            $fileName = time() . '.' . $file->getClientOriginalName();
+            $path = $file->storeAs('/public/img/', $fileName);
+            $article->photo = $fileName;
+        }
+        $article->title = request()->title;
+        $article->paragraph = request()->paragh;
+        $article->save();
+
+        return redirect('/articles');
+    }
 }

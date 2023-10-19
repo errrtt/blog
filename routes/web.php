@@ -25,6 +25,9 @@ Route::post('/articles/add', [ArticleController::class, 'create']);
 Route::get('/articles/ask/{id}', [ArticleController::class, 'ask']);
 Route::get('/articles/delete/{id}', [ArticleController::class, 'delete']);
 
+Route::get('/articles/edit/{id}', [ArticleController::class, 'edit']);
+Route::post('/articles/edit/{id}', [ArticleController::class, 'update']);
+
 Route::get('/user/articles', [UserArticleController::class, 'index']);
 
 Auth::routes();
