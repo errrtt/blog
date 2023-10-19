@@ -31,6 +31,7 @@
                             <a href="{{url("/articles/edit/$article->id")}}" class="btn btn-outline-success">Edit</a>
                         </div>
                     @endcan
+                    <a href="{{url("/articles/comments/$article->id")}}" class="btn btn-outline-secondary">Add Comment</a>
                 @endauth
 
         </div>

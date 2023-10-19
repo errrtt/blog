@@ -25,6 +25,7 @@
                                 <span>
                                     <i class="fa-solid fa-user" style="color: #01276d;"></i>
                                      <small class="ms-1"><b>{{$article->user->name}}</b></small>
+                                     <small class="text-success float-end">Comments : {{ count($article->comments) }}</small>
                                 </span>
                             </div>
                         </div>
