@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -22,5 +23,16 @@ class CommentController extends Controller
         $comment->save();
 
         return back();
+    }
+
+    public function delete($id)
+    {
+        $comment = Comment::find($id);
+
+        if(Gate::allows('comment-delete', $comment)) {
+            $comment->delete();
+            return back()->with('info', 'your one article is deleted just now');
+        }
+        return back()->with('info', 'Unauthorized');
     }
 }

@@ -32,6 +32,8 @@ Route::post('/articles/edit/{id}', [ArticleController::class, 'update']);
 Route::get('/articles/comments/{id}', [CommentController::class, 'index']);
 Route::post('/comments/add', [CommentController::class, 'create']);
 
+Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);
+
 Route::get('/user/articles', [UserArticleController::class, 'index']);
 
 
