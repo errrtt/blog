@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="container mt-5" style="max-width:700px">
+        @if ($errors->any())
+            <div class="alert alert-warning">
+                <ol>
+                    @foreach ($errors->all() as $err)
+                        <li>{{ $err }}</li>
+                    @endforeach
+                </ol>
+            </div>
+        @endif
         <form method="post" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file" class="form-control mb-3">

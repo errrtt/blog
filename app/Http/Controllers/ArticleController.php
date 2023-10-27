@@ -34,6 +34,16 @@ class ArticleController extends Controller
 
     public function create()
     {
+        $validator = validator(request()->all(), [
+            'file' => 'required',
+            'title' => 'required',
+            'paragh' => 'required',
+        ]);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
         $data = new Article;
         if(request()->hasFile('file')) {
             $file = request()->file('file');

@@ -14,8 +14,12 @@ class CommentController extends Controller
         return view('articles.comment', ['article' => $article]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->validate([
+            'content' => 'required'
+        ]);
+
         $comment = new Comment;
         $comment->content = request()->content;
         $comment->article_id = request()->article_id;
