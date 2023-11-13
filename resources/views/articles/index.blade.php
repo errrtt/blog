@@ -27,6 +27,42 @@
                                      <small class="ms-1"><b>{{$article->user->name}}</b></small>
                                      <small class="text-success float-end">Comments : {{ count($article->comments) }}</small>
                                 </span>
+
+                                <div class="mt-4">
+                                    <p>
+                                        <span>
+                                             <i class="fa-regular fa-thumbs-up fa-lg me-1"></i>
+                                            {{ count($article->likes->where('default', '1')) }}
+                                        </span>
+                                        <span class="ms-3">
+                                            <i class="fa-regular fa-thumbs-down fa-lg"></i>
+                                            {{ count($article->dislikes->where('default', 1)) }}
+                                        </span>
+                                    </p>
+                                    <div class="btn-group">
+                                        @auth
+                                            @if ($article->likes->where('user_id', auth()->user()->id)->where('default', 1)->isNotEmpty())
+                                            <a href="{{ url("/user/like/$article->id") }}" class="btn btn-secondary btn-sm">
+                                            <i class="fa-regular fa-thumbs-up fa-xl"></i>
+                                            </a>
+                                            @else
+                                                <a href="{{ url("/user/like/$article->id") }}" class="btn btn-outline-secondary btn-sm">
+                                                <i class="fa-regular fa-thumbs-up fa-xl"></i>
+                                                </a>
+                                            @endif
+
+                                            @if ($article->dislikes->where('user_id', auth()->user()->id)->where('default', 1)->isNotEmpty())
+                                                <a href="{{ url("/user/dislike/$article->id") }}" class="btn btn-secondary btn-sm">
+                                                <i class="fa-regular fa-thumbs-down fa-xl"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ url("/user/dislike/$article->id") }}" class="btn btn-outline-secondary btn-sm">
+                                                <i class="fa-regular fa-thumbs-down fa-xl"></i>
+                                                </a>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

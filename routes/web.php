@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserArticleController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,9 @@ Route::post('/comments/add', [CommentController::class, 'create']);
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);
 
 Route::get('/user/articles', [UserArticleController::class, 'index']);
+
+Route::get('/user/like/{id}', [LikeController::class, 'add']);
+Route::get('/user/dislike/{id}', [LikeController::class, 'dislike_add']);
 
 
 Auth::routes();
